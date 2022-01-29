@@ -5,7 +5,7 @@ const validation = (schema) => {
             error.status = 400;
             next(error);
         }
-        next()
-    }
-}
+        next();
+    };
+};
 module.exports = validation;

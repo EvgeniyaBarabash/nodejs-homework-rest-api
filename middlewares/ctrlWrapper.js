@@ -5,6 +5,6 @@ const ctrlWrapper = (ctrl) => {
         } catch (error) {
             next(error);
         }
-    }
+    };
 };
 module.exports = ctrlWrapper;
