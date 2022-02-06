@@ -17,12 +17,9 @@ const userSchema = Schema({
     },
     token: {
         type: String,
-        default: null,
+        default: "",
     },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'user',
-    }
+
 }, { versionKey: false, timestamps: true });
 
 const User = model("user", userSchema);
