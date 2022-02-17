@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
+
 const userSchema = Schema({
     password: {
         type: String,
@@ -21,7 +22,15 @@ const userSchema = Schema({
     },
     avatarURL: {
         avatarURL: String,
-    }
+    },
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationToken: {
+        type: String,
+    },
+
 }, { versionKey: false, timestamps: true });
 
 const User = model("user", userSchema);
@@ -37,10 +46,13 @@ const joiLoginSchema = Joi.object({
     password: Joi.string().min(6).required(),
     subscription: Joi.string().valid("starter", "pro", "business"),
 })
-
+const verifyEmailSchema = Joi.object({
+    email: Joi.string()
+})
 
 module.exports = {
     User,
     joiSignupSchema,
     joiLoginSchema,
+    verifyEmailSchema,
 }
