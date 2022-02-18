@@ -9,6 +9,8 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
         throw new Unauthorized(`Email ${email} is wrong!`);
+    } if (!user.verify) {
+        throw new Unauthorized(401, "Email not verify");
     }
     const compareResult = await bcrypt.compare(password, user.password);
     if (!compareResult) {
