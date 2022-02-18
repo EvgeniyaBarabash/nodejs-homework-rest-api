@@ -3,7 +3,7 @@ const Conflict = require("http-errors");
 const bcrypt = require("bcryptjs");
 const gravatar = require('gravatar');
 const { v4 } = require("uuid");
-const sendMail = require("../../helpers");
+const { sendMail } = require("../../helpers");
 
 const signup = async (req, res) => {
     const { email, password, subscription } = req.body;
